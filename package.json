@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Auto-compiles less files on save",
   "activationEvents": ["less:compile","core:save"],
-  "repository": "https://github.com/atom/lesscompile",
+  "repository": "https://github.com/Metric/Less-Compile",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
