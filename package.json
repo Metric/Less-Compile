@@ -1,0 +1,14 @@
+{
+  "name": "lesscompile",
+  "main": "./lib/lesscompile",
+  "version": "0.0.0",
+  "description": "Auto-compiles less files on save",
+  "activationEvents": ["less:compile","core:save"],
+  "repository": "https://github.com/atom/lesscompile",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
