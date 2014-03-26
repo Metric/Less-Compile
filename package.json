@@ -1,7 +1,7 @@
 {
   "name": "lesscompile",
   "main": "./lib/lesscompile",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Auto-compiles less files on save",
   "activationEvents": [
     "less:compile",
@@ -13,6 +13,6 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-  	"less": "^1.7.0"
+    "less": "^1.7.0"
   }
 }
