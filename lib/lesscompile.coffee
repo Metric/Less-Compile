@@ -1,4 +1,4 @@
-less = require './less'
+less = require 'less'
 fs = require 'fs'
 
 compile = () ->
