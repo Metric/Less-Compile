@@ -9,7 +9,7 @@ compile = () ->
 
     if filePath.indexOf('.less') == filePath.length - 5
       text = activeEditor.getText()
-      parser = new less.Parser
+      parser = new less.Parser({filename:filePath})
 
       parser.parse(text, (err, tree) =>
         if err
