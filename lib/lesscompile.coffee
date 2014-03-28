@@ -1,5 +1,6 @@
 less = require 'less'
 fs = require 'fs'
+path = require 'path'
 
 compile = () ->
   activeEditor = atom.workspace.getActiveEditor()
@@ -9,7 +10,7 @@ compile = () ->
 
     if filePath.indexOf('.less') == filePath.length - 5
       text = activeEditor.getText()
-      parser = new less.Parser
+      parser = new less.Parser({paths: [path.dirname(filePath)]})
 
       parser.parse(text, (err, tree) =>
         if err
