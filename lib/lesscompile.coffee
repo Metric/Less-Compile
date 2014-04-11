@@ -1,8 +1,11 @@
 less = require 'less'
 fs = require 'fs'
 path = require 'path'
+{Function} = require 'loophole'
 
 compile = () ->
+  oldFunc = global.Function
+  global.Function = Function
   activeEditor = atom.workspace.getActiveEditor()
 
   if activeEditor
@@ -25,6 +28,8 @@ compile = () ->
             if err
               console.log("Failed to save css file!")
         )
+
+        global.Function = oldFunc
       )
 
 module.exports =
