@@ -6,12 +6,12 @@ path = require 'path'
 compile = () ->
   oldFunc = global.Function
   global.Function = Function
-  activeEditor = atom.workspace.getActiveEditor()
+  activeEditor = atom.workspace.getActiveTextEditor()
 
   if activeEditor
     filePath = activeEditor.getPath()
 
-    if filePath.indexOf('.less') == filePath.length - 5
+    if filePath and filePath.indexOf('.less') == filePath.length - 5
       text = activeEditor.getText()
       parser = new less.Parser({paths: [path.dirname(filePath)]})
 
@@ -19,6 +19,7 @@ compile = () ->
         if err
           console.log('Failed to compile less file for: ' + filePath)
           console.log(err)
+          global.Function = oldFunc
           return
 
         css = tree.toCSS({compress: true})
@@ -31,11 +32,19 @@ compile = () ->
 
         global.Function = oldFunc
       )
+    else
+      global.Function = oldFunc
+  else
+    global.Function = oldFunc
 
 module.exports =
   activate: (state) =>
-    atom.workspaceView.command "less:compile", => compile()
-    atom.workspaceView.command "core:save", => compile()
+    atom.commands.add "atom-workspace",
+      "less:compile": (event) =>
+        compile()
+    atom.commands.add "atom-workspace",
+      "core:save": (event) =>
+        compile()
 
   deactivate: ->
 
