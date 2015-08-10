@@ -4,10 +4,10 @@
   "version": "0.5.0",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "description": "Auto-compiles less files on save",
-  "activationEvents": [
-    "less:compile",
-    "core:save"
-  ],
+  "activationCommands": {
+    "atom-workspace": ["less:compile",
+    "core:save"]
+  },
   "repository": "https://github.com/Metric/Less-Compile",
   "license": "MIT",
   "engines": {
